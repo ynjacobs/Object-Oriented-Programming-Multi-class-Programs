@@ -30,8 +30,14 @@ class ShoppingCart:
             total += product.calculate()
         return total
 
-apple = Product('apple', 3, 0.13)
-pear = Product('pear', 2, 0.13)
+    def most_expensive(self):
+        compare = 0
+        for product in self.products:
+            compare = max(product.base_price, compare)
+        return compare
+
+apple = Product('apple', 2, 0.13)
+pear = Product('pear', 3, 0.13)
 shopping_cart = ShoppingCart()
 print(shopping_cart.add_to_cart(apple))
 shopping_cart.add_to_cart(pear)
@@ -39,7 +45,7 @@ shopping_cart.add_to_cart(pear)
 
 print('your total is $', shopping_cart.total_before_tax())
 print('your total after tax is $', shopping_cart.after_tax())
-
+print("the most expensive price is ",shopping_cart.most_expensive())
 
 
 
